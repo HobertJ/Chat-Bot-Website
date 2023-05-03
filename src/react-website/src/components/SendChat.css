@@ -1,0 +1,70 @@
+.sendchat-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    background-color: #F8EDE3;
+    width: calc(100vw - 250px);;
+    height: 200px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 0 0;
+  }
+  
+  .sendchat-input {
+    resize: vertical;
+    width: 50%;
+    min-height: 50px;
+    max-height: 100px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .sendchat-input::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .sendchat-input::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+  }
+  
+  .sendchat-input::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 5px;
+  }
+  
+  .sendchat-input::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+  }
+
+  .sendchat-button {
+    width: 50%;
+    background-color: #D0B8A8;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .sendchat-button:hover {
+    background-color: #7D6E83;
+    color: #F8EDE3;
+  }
+
+  .footer {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  

@@ -1,0 +1,57 @@
+.history-container {
+    height: calc(100vh - 250px);
+    min-height: 300px;
+    width: 250px;
+    margin-top: 50px;
+    margin-bottom: 200px;
+    background: linear-gradient(50deg,#D0B8A8, #7D6E83);
+    background-color: #7D6E83;
+    overflow-y: scroll;
+    padding: 10px;
+    padding-left: 20px;
+    padding-top: 30px;
+  }
+
+  .history-container::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .history-container::-webkit-scrollbar-track {
+    background-color: #7D6E83;
+  }
+  
+  .history-container::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 5px;
+  }
+  
+  .history-container::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+  }
+
+  .history-button {
+    width: 100%;
+    background-color: #7D6E83;
+    color: #fff;
+    font-weight: 300;
+    border: 1px solid #D0B8A8;
+    box-shadow: #D0B8A8;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin : 1px auto;
+    text-align: left;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .history-button:hover {
+    background-color: #D0B8A8;
+    color: #F8EDE3;
+  }
+
+  .bi {
+    margin-right: 10px;
+  }
+
+  

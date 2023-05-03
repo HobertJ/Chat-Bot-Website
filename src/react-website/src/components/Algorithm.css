@@ -1,0 +1,59 @@
+.algorithm-container {
+    height: 200px;
+    width: 250px;
+    background-color: #7D6E83;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0px 0px 10px #7D6E83;
+    border-radius: 0;
+}
+
+.form-check {
+    padding: 10px 30px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 3px black;
+    border-radius: 5px;
+    color: #DFD3C3;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+.form-check:hover {
+    background-color: #D0B8A8;
+    color: #7D6E83
+}
+  
+.form-check-input {
+    background-color: #7D6E83;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+  }
+  
+.form-check-input:hover {
+    background-color: #7D6E83;
+    color: #7D6E83;
+}
+
+.form-check-input:checked {
+    background-color: #D0B8A8;
+    box-shadow: 0px 0px 10px #D0B8A8;
+  }
+  
+.form-check-label {
+    font-weight: 100;
+    cursor: pointer;
+}
+
+.choose-algorithm {
+    color: #DFD3C3;
+    font-size: larger;
+    font-weight: 100;
+}
+
+
+  

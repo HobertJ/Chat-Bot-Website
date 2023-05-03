@@ -1,0 +1,76 @@
+.chatboba-container {
+    position: fixed;
+    top: 0px;
+    right: 0;
+    height: calc(100% - 200px);
+    width: calc(100% - 250px);
+    background-color: #f0f0f0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    overflow-y: scroll;
+  }
+  
+  .chatboba-container::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  .chatboba-container::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
+  
+  .chatboba-container::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 5px;
+  }
+  
+  .chatboba-container::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+  }
+  
+  .chatboba-message-box {
+    background-color: #f0f0f0;
+    color: #7D6E83;
+    font-weight: 300;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 60%;
+    text-align: right;
+    margin: 10px auto;
+  }
+  
+  .chatboba-reply-box {
+    background-color: #F8EDE3;
+    color: #7D6E83;
+    font-weight: 350;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 60%;
+    text-align: left;
+    margin: 10px auto;
+  }
+
+.chatime-title {
+    font-weight: 300;
+    color: #F8EDE3;
+    text-align: right;
+}
+
+.chatboba-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -2;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 83.3vw;
+    height: 91vh;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: -1;
+  }
