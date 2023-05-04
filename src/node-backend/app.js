@@ -38,7 +38,7 @@ async function main(string, algo){
                 if(jawab.length == 1){
                     return jawab[0].jawaban;
                 }else{
-                    return `Pertanyaan tidak ditemukan di database.\n Apakah maksud Anda:\n 1.${jawab[0].pertanyaan} 2.${jawab[0].pertanyaan} 3.${jawab[0].pertanyaan}`
+                    return `Pertanyaan tidak ditemukan di database.\n Apakah maksud Anda:\n 1.${jawab[0].pertanyaan} 2.${jawab[1].pertanyaan} 3.${jawab[2].pertanyaan}`
                 }
                 
             case FITUR_TANGGAL:
@@ -63,7 +63,7 @@ async function main(string, algo){
                     return "Format yang anda berikan untuk menambahkan pertanyaan tidak sesuai";
                 }
 
-                const pesanTambah = await CRUD.insertQuestion(client, dbName, qnaCollection, string, answer);
+                const pesanTambah = await CRUD.insertQuestion(client, dbName, qnaCollection, pertanyaan, jawaban);
                 return pesanTambah;
 
             case FITUR_HAPUS_PERTANYAAN:
