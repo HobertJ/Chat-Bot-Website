@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './Algorithm.css';
 
-function Algorithm() {
+function Algorithm({handleChangeAlgorithm}) {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState('bayerMoore');
 
   function handleAlgorithmChange(event) {
     setSelectedAlgorithm(event.target.value);
+    handleChangeAlgorithm(selectedAlgorithm)
   }
 
   return (

@@ -2,29 +2,9 @@ import React from 'react';
 import './ChatBoba.css';
 import landscape from '../assets/landscape.mp4';
 
-function ChatBoba() {
-  const chatData = [
-    {
-      message: 'Hello',
-      reply: 'Hi there!',
-    },
-    {
-      message: 'How are you?',
-      reply: 'I am doing well, thanks. How about you?',
-    },
-    {
-      message: 'I am good too, thanks!',
-      reply: 'That is great to hear!',
-    },
-    {
-      message: 'What are you doing today?',
-      reply: 'I am going to finish The Great Task',
-    },
-    {
-      message: 'The Great Task?',
-      reply: 'Tugas Besar maksudnya sob HAHAHA!!!',
-    }
-  ];
+function ChatBoba({chatData}) {
+
+
 
   return (
     <div className='chatboba-container'>

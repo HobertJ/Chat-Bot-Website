@@ -1,9 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { chatService } from '../service/chat';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './SendChat.css';
 
-function SendChat() {
+// udah bisa nyimpen chat data; question sama reply
+
+function SendChat({algorithm, handleChatDataChange, chatData }) {
   const [chatInput, setChatInput] = useState('');
+  const [reply, setReply] = useState('');
+  
+
+  // reply harusnya udah kesave di variabel ini ^
+  // sisa logika munculin input & reply, 
   const inputRef = useRef(null);
 
   function handleChatInput(event) {
@@ -13,11 +21,22 @@ function SendChat() {
   }
 
   function handleSendChat() {
-    // TODO: handle send chat logic
-    console.log(chatInput);
-    setChatInput('');
-    inputRef.current.style.height = 'auto';
-  }
+  console.log(chatInput);
+  inputRef.current.style.height = 'auto';
+  
+  //TODO : call chatService BENERIN 
+  //setReply(chatService(chatInput, algorithm));
+
+  // Save reply from chatbot
+  const newChatData = {
+    message: chatInput,
+    // ganti pake reply asli
+    reply: "reply"
+  };
+  
+  handleChatDataChange(newChatData);
+  setChatInput('');
+}
 
   return (
     <div className="sendchat-container position-fixed bottom-0 end-0 p-3">
