@@ -11,8 +11,8 @@ function App() {
   const [algorithm, setAlgorithm] = React.useState([])
   const [chatData, setChatData] = React.useState([])
 
-  const handleChangeAlgorithm = (event) => {
-    setAlgorithm(event.target.value)
+  const handleChangeAlgorithm = (algorithm) => {
+    setAlgorithm(algorithm)
   }
 
   const handleChatDataChange = (data) => {
