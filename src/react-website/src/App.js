@@ -10,6 +10,7 @@ import ChatBoba from './components/ChatBoba'
 function App() {
   const [algorithm, setAlgorithm] = React.useState([])
   const [chatData, setChatData] = React.useState([])
+  const [history, setHistory] = React.useState([])
 
   const handleChangeAlgorithm = (algorithm) => {
     setAlgorithm(algorithm)

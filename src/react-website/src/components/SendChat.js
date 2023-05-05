@@ -111,7 +111,7 @@ function SendChat({ algorithm, handleChatDataChange, chatData }) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({question: chatInput, algo: "kmp"})
+      body: JSON.stringify({question: chatInput, algo: algorithm})
       
     })
     .then(response => {

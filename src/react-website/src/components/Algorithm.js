@@ -3,7 +3,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './Algorithm.css';
 
 function Algorithm({handleChangeAlgorithm}) {
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState('bayerMoore');
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState('bm');
 
   function handleAlgorithmChange(event) {
     setSelectedAlgorithm(event.target.value);
@@ -17,12 +17,12 @@ function Algorithm({handleChangeAlgorithm}) {
         <input
           type="radio"
           className="form-check-input"
-          id="bayerMoore"
-          value="bayerMoore"
-          checked={selectedAlgorithm === 'bayerMoore'}
+          id="bm"
+          value="bm"
+          checked={selectedAlgorithm === 'bm'}
           onChange={handleAlgorithmChange}
         />
-        <label htmlFor="bayerMoore" className="form-check-label">BAYER-MOORE</label>
+        <label htmlFor="bayerMoore" className="form-check-label">KMP</label>
       </div>
       <div className="form-check">
         <input
@@ -33,7 +33,7 @@ function Algorithm({handleChangeAlgorithm}) {
           checked={selectedAlgorithm === 'kmp'}
           onChange={handleAlgorithmChange}
         />
-        <label htmlFor="kmp" className="form-check-label">KMP</label>
+        <label htmlFor="kmp" className="form-check-label">BOYER-MOORE</label>
       </div>
     </div>
   );
