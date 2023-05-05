@@ -1,5 +1,5 @@
 import React from 'react'
-import { chatService } from './service/chat'
+//import { chatService } from './service/chat'
 import NewChat from './components/NewChat'
 import History from './components/History'
 import Algorithm from './components/Algorithm'
@@ -10,7 +10,7 @@ import ChatBoba from './components/ChatBoba'
 function App() {
   const [algorithm, setAlgorithm] = React.useState([])
   const [chatData, setChatData] = React.useState([])
-  const [history, setHistory] = React.useState([])
+  //const [history, setHistory] = React.useState([])
 
   const handleChangeAlgorithm = (algorithm) => {
     setAlgorithm(algorithm)

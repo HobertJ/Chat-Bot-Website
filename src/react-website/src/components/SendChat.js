@@ -82,8 +82,8 @@
 // export default SendChat;
 
 
-import React, { useState, useRef, useEffect } from 'react';
-import { chatService } from '../service/chat';
+import React, { useState, useRef } from 'react';
+//import { chatService } from '../service/chat';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './SendChat.css';
 
@@ -91,7 +91,7 @@ import './SendChat.css';
 
 function SendChat({ algorithm, handleChatDataChange, chatData }) {
   const [chatInput, setChatInput] = useState('');
-  const [reply, setReply] = useState('');
+  //const [reply, setReply] = useState('');
   const inputRef = useRef(null);
 
   function handleChatInput(event) {
