@@ -1,8 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const app = require('app.js');
+const app = express();
+const main = require("./app.js");
 
-router.post('/chat', async (req , res) => {
-    const response = await app.main(req.body.question, req.body.algo);
-}
-)
+
+module.exports = (app) => {
+    app.post('/chat', async (req , res) => {
+        console.log(req.body.question);
+        console.log(req.body.algo);
+        const response = await main(req.body.question, req.body.algo);
+        res.json({ message: response });
+    });
+    
+};

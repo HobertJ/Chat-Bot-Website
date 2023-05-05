@@ -19,13 +19,18 @@ function App() {
     setChatData((prevData) => [...prevData, data]);
   }
 
+  const handleChatHistoryChange = (data) => {
+    setChatData(data);
+  }
+
+
   return (
     <div>
       <div>
         <NewChat />
       </div>
       <div>
-        <History />
+        <History handleChatHistoryChange={handleChatHistoryChange} />
       </div>
       <div> 
         <Algorithm handleChangeAlgorithm={handleChangeAlgorithm}/>

@@ -1,4 +1,5 @@
 const { MongoClient } = require("mongodb");
+const cors = require('cors');
 
 // uri diisi dengan string connection mongoDB
 const uri = "mongodb+srv://hobert_jonatan:slebewboy123@cluster0.f0og611.mongodb.net/?retryWrites=true&w=majority"
@@ -27,7 +28,6 @@ const FITUR_KALKULATOR = 5;
 
 
 async function main(string, algo){
-
     const fitur = classifyString(string);
 
     try{
@@ -89,7 +89,8 @@ async function main(string, algo){
                 return hasil;
                 
             default: 
-            return "Saya tidak mengerti apa yang Anda katakan"
+                console.log("fitur default")
+                return "Saya tidak mengerti apa yang Anda katakan"
                 
         }
     }catch(error){
@@ -150,10 +151,10 @@ async function searchInDB(question, algo){
     }
 }
 
+module.exports = main;
+// async function main2(){
+//     const hasil = await main('Hapus pertanyaan kenapa cicak tidak punya kaki', "kmp");
+//     console.log(hasil);
+// }
 
-async function main2(){
-    const hasil = await main('Hapus pertanyaan kenapa cicak tidak punya kaki', "kmp");
-    console.log(hasil);
-}
-
-main2()
+// main2()
