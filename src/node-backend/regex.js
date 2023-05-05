@@ -6,9 +6,12 @@ function classifyString(inputString) {
     const FITUR_KALKULATOR = 5;
     const UNKNOWN = 6;
 
-    if (/what|where|when|why|how|apa|dimana|kapan|kenapa|bagaimana|benarkah/i.test(inputString)) {
-      return FITUR_PERTANYAAN;
+    if (/add|Tambahkan pertanyaan/i.test(inputString)) {
+      return FITUR_TAMBAH_PERTANYAAN;
     } 
+    else if (/delete|remove|Hapus pertanyaan/i.test(inputString)) {
+      return FITUR_HAPUS_PERTANYAAN;
+    }
     else if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(inputString)) {
       return FITUR_TANGGAL;
     } 
@@ -21,12 +24,9 @@ function classifyString(inputString) {
     else if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(inputString)) {
       return FITUR_TANGGAL;
     }
-    else if (/add|Tambahkan pertanyaan/i.test(inputString)) {
-      return FITUR_TAMBAH_PERTANYAAN;
+    else if (/what|where|when|why|how|apa|dimana|kapan|kenapa|bagaimana|benarkah/i.test(inputString)) {
+      return FITUR_PERTANYAAN;
     } 
-    else if (/delete|remove|Hapus pertanyaan/i.test(inputString)) {
-      return FITUR_HAPUS_PERTANYAAN;
-    }
     else if (/[\d+\-*\/\s]+/.test(inputString)) {
       return FITUR_KALKULATOR
     } 

@@ -29,6 +29,7 @@ const FITUR_KALKULATOR = 5;
 async function main(string, algo){
 
     const fitur = classifyString(string);
+    client.connect();
 
     try{
         switch(fitur){
@@ -38,7 +39,7 @@ async function main(string, algo){
                 if(jawab.length == 1){
                     return jawab[0].jawaban;
                 }else{
-                    return `Pertanyaan tidak ditemukan di database.\n Apakah maksud Anda:\n 1.${jawab[0].pertanyaan} 2.${jawab[1].pertanyaan} 3.${jawab[2].pertanyaan}`
+                    return `Pertanyaan tidak ditemukan di database.\nApakah maksud Anda:\n1.${jawab[0].pertanyaan}\n2.${jawab[1].pertanyaan}\n3.${jawab[2].pertanyaan}`
                 }
                 
             case FITUR_TANGGAL:
@@ -89,23 +90,16 @@ async function main(string, algo){
     }catch(error){
         // return "Saya tidak dapat menjawab pertanyaan Anda"
         console.log(error);
+    }finally{
+        await client.close();
     }
-
 }
-
-// TODO : routing fitur, buat pencarian di database dan similaritynya pilih 3
-
-// planing 
-// return 1 question atau top 3 question
-// top 1 question jika exact match atau minimal 90% match
-// top 3 jika tidak ada kasus top 1
 
 async function searchInDB(question, algo){
     let hasil = [];
     const database = await client.db(dbName).collection(qnaCollection).find().toArray();
     const dbLength = database.length;
     let foundExact = false;
-    client.connect();
     if(algo == "kmp"){
         for(let i = 0; i < dbLength; i++){
             if(kmp(database[i].pertanyaan.toLowerCase(), question.toLowerCase()) !== -1){
@@ -116,7 +110,6 @@ async function searchInDB(question, algo){
                         jawaban: database[i].jawaban
                     }
                 ]
-                await client.close();
                 return hasil;
             }else{
                 database[i].percentMatch = similarityPercentage(database[i].pertanyaan.toLowerCase(), question.toLowerCase());
@@ -132,7 +125,6 @@ async function searchInDB(question, algo){
                         jawaban: database[i].jawaban
                     }
                 ];
-                await client.close();
                 return hasil;
             }else{
                 database[i].percentMatch = similarityPercentage(database[i].pertanyaan.toLowerCase(), question.toLowerCase());
@@ -142,19 +134,18 @@ async function searchInDB(question, algo){
 
     if(!foundExact){
         database.sort((a,b) => b.percentMatch - a.percentMatch);
-        if(database[0].percentMatch >= 0.9){
+        if(database[0].percentMatch >= 90){
             hasil = [database[0]];
         }else{
             hasil = database.slice(0, 3);
         }
-        await client.close();
         return hasil;
     }
 }
 
 
 async function main2(){
-    const hasil = await main('Tambahkan pertanyaan "siapa nama presiden pertama indonesia" dengan jawaban "Insinyur soekarno" ke database', "kmp");
+    const hasil = await main('siapa presiden indonesia', "kmp");
     console.log(hasil);
 }
 

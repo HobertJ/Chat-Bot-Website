@@ -1,27 +1,3 @@
-// const { MongoClient } = require("mongodb");
-
-// // Replace the uri string with your connection string.
-// const uri = "mongodb+srv://hobert_jonatan:slebewboy123@cluster0.f0og611.mongodb.net/?retryWrites=true&w=majority"
-// const dbName = 'chatbot
-// const client = new MongoClient(uri, 
-//     {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//     });
-
-// async function main(){
-
-//     try{
-//         client.connect();
-//         const hasil = await insertQuestion(client, "siapa bapak anda", "cicak kakinya 4 kuntul!");
-//         console.log(hasil);
-//     }catch(e){
-//         console.log(e);
-//     }finally{
-//         await client.close();
-//     }
-// }
-
 async function isQuestionInDB(client, dbName, collectionName, question, answer){
     const questionOnly = await client.db(dbName).collection(collectionName).findOne({pertanyaan: question});
     const both = await client.db(dbName).collection(collectionName).findOne({
@@ -61,7 +37,7 @@ async function answerQuestion(client, dbName, collectionName, question){
 // bisa juga untuk mengupdate jawaban dari pertanyaan yang sudah ada 
 async function insertQuestion(client, dbName, collectionName, question, answer){
 
-    const exist = await isQuestionInDB(client, question, answer);
+    const exist = await isQuestionInDB(client, dbName, collectionName, question, answer);
 
     if(exist.both){
         return(`Pertanyaan "${question}" telah memiliki jawaban "${answer}" pada database.`)
