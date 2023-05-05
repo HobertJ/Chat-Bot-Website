@@ -1,4 +1,4 @@
-function getDayOfWeek(dateString) {
+async function getDayOfWeek(dateString) {
     // memisahkan tanggal, bulan, dan tahun
     const [day, month, year] = dateString.split('/').map(Number);
   

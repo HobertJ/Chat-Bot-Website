@@ -29,7 +29,6 @@ const FITUR_KALKULATOR = 5;
 async function main(string, algo){
 
     const fitur = classifyString(string);
-    client.connect();
 
     try{
         switch(fitur){
@@ -50,25 +49,30 @@ async function main(string, algo){
                 }catch(error){
                     return "Format tanggal yang anda berikan tidak sesuai";
                 }
-                const day = getDayOfWeek(dateString);
+                const day = await getDayOfWeek(dateString);
                 return `Hari ${day}`;
 
             case FITUR_TAMBAH_PERTANYAAN:
-                console.log("fitur tambah pertanyaan");        
+                console.log("fitur tambah pertanyaan");
+                client.connect();       
                 let pertanyaan, jawaban, extract;
                 try{
                     extract = utils.extractQuestionAnswer(string);
                     pertanyaan = extract.question;
                     jawaban = extract.answer;
                 }catch(error){
+                    await client.close()
                     return "Format yang anda berikan untuk menambahkan pertanyaan tidak sesuai";
                 }
 
+
                 const pesanTambah = await CRUD.insertQuestion(client, dbName, qnaCollection, pertanyaan, jawaban);
+                await client.close();
                 return pesanTambah;
 
             case FITUR_HAPUS_PERTANYAAN:
-                console.log("fitur hapus pertanyaan");        
+                console.log("fitur hapus pertanyaan");      
+                client.connect();  
                 let question;
                 try{
                     question = utils.extractQuestionOnly(string);
@@ -76,11 +80,12 @@ async function main(string, algo){
                     return "Format yang anda berikan untuk menghapus pertanyaan tidak sesuai";
                 }
                 const pesanHapus = await CRUD.deleteQuestion(client, dbName, qnaCollection, question);
+                await client.close()
                 return pesanHapus;
 
             case FITUR_KALKULATOR:
                 console.log("fitur kalkulator");
-                const hasil = calculate(string);
+                const hasil = await calculate(string);
                 return hasil;
                 
             default: 
@@ -90,8 +95,6 @@ async function main(string, algo){
     }catch(error){
         // return "Saya tidak dapat menjawab pertanyaan Anda"
         console.log(error);
-    }finally{
-        await client.close();
     }
 }
 
@@ -100,6 +103,7 @@ async function searchInDB(question, algo){
     const database = await client.db(dbName).collection(qnaCollection).find().toArray();
     const dbLength = database.length;
     let foundExact = false;
+    client.connect()
     if(algo == "kmp"){
         for(let i = 0; i < dbLength; i++){
             if(kmp(database[i].pertanyaan.toLowerCase(), question.toLowerCase()) !== -1){
@@ -110,6 +114,7 @@ async function searchInDB(question, algo){
                         jawaban: database[i].jawaban
                     }
                 ]
+                await client.close();
                 return hasil;
             }else{
                 database[i].percentMatch = similarityPercentage(database[i].pertanyaan.toLowerCase(), question.toLowerCase());
@@ -125,6 +130,7 @@ async function searchInDB(question, algo){
                         jawaban: database[i].jawaban
                     }
                 ];
+                await client.close();
                 return hasil;
             }else{
                 database[i].percentMatch = similarityPercentage(database[i].pertanyaan.toLowerCase(), question.toLowerCase());
@@ -139,13 +145,14 @@ async function searchInDB(question, algo){
         }else{
             hasil = database.slice(0, 3);
         }
+        await client.close();
         return hasil;
     }
 }
 
 
 async function main2(){
-    const hasil = await main('siapa presiden indonesia', "kmp");
+    const hasil = await main('Hapus pertanyaan kenapa cicak tidak punya kaki', "kmp");
     console.log(hasil);
 }
 

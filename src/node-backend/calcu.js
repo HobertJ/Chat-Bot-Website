@@ -1,4 +1,4 @@
-function calculate(expression) {
+async function calculate(expression) {
     // Fungsi untuk mengembalikan nilai dari dua buah angka dengan satu buah operator
     const evaluate = (op, a, b) => {
       switch (op) {
