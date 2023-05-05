@@ -58,19 +58,19 @@
 }
 
 .chatboba-container video {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     object-fit: cover;
     z-index: -2;
   }
 
   .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 0;
-    width: 83.3vw;
-    height: 91vh;
+    right: 0;
+    width: 83.5vw;
+    height: 80vh;
     background-color: rgba(255, 255, 255, 0.3);
     z-index: -1;
   }
