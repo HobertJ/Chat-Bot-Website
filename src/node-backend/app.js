@@ -29,7 +29,7 @@ const FITUR_KALKULATOR = 5;
 
 async function main(string, algo){
     const fitur = classifyString(string);
-
+    client.connect();
     try{
         switch(fitur){
             case FITUR_PERTANYAAN:
@@ -38,7 +38,7 @@ async function main(string, algo){
                 if(jawab.length == 1){
                     return jawab[0].jawaban;
                 }else{
-                    return `Pertanyaan tidak ditemukan di database.\nApakah maksud Anda:\n1.${jawab[0].pertanyaan}\n2.${jawab[1].pertanyaan}\n3.${jawab[2].pertanyaan}`
+                    return `Pertanyaan tidak ditemukan di database. Apakah maksud Anda: 1. ${jawab[0].pertanyaan}  2. ${jawab[1].pertanyaan}  3. ${jawab[2].pertanyaan} (Tolong ketik kembali pertanyaan yang anda masuk)`
                 }
                 
             case FITUR_TANGGAL:
@@ -61,13 +61,13 @@ async function main(string, algo){
                     pertanyaan = extract.question;
                     jawaban = extract.answer;
                 }catch(error){
-                    await client.close()
+                    // await client.close()
                     return "Format yang anda berikan untuk menambahkan pertanyaan tidak sesuai";
                 }
 
 
                 const pesanTambah = await CRUD.insertQuestion(client, dbName, qnaCollection, pertanyaan, jawaban);
-                await client.close();
+                // await client.close();
                 return pesanTambah;
 
             case FITUR_HAPUS_PERTANYAAN:
@@ -80,7 +80,7 @@ async function main(string, algo){
                     return "Format yang anda berikan untuk menghapus pertanyaan tidak sesuai";
                 }
                 const pesanHapus = await CRUD.deleteQuestion(client, dbName, qnaCollection, question);
-                await client.close()
+                // await client.close()
                 return pesanHapus;
 
             case FITUR_KALKULATOR:
@@ -115,7 +115,7 @@ async function searchInDB(question, algo){
                         jawaban: database[i].jawaban
                     }
                 ]
-                await client.close();
+                // await client.close();
                 return hasil;
             }else{
                 database[i].percentMatch = similarityPercentage(database[i].pertanyaan.toLowerCase(), question.toLowerCase());
@@ -131,7 +131,7 @@ async function searchInDB(question, algo){
                         jawaban: database[i].jawaban
                     }
                 ];
-                await client.close();
+                // await client.close();
                 return hasil;
             }else{
                 database[i].percentMatch = similarityPercentage(database[i].pertanyaan.toLowerCase(), question.toLowerCase());
@@ -146,15 +146,9 @@ async function searchInDB(question, algo){
         }else{
             hasil = database.slice(0, 3);
         }
-        await client.close();
+        // await client.close();
         return hasil;
     }
 }
 
 module.exports = main;
-// async function main2(){
-//     const hasil = await main('Hapus pertanyaan kenapa cicak tidak punya kaki', "kmp");
-//     console.log(hasil);
-// }
-
-// main2()

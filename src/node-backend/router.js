@@ -11,5 +11,5 @@ module.exports = (app) => {
         const response = await main(req.body.question, req.body.algo);
         res.json({ message: response });
     });
-    
+
 };
